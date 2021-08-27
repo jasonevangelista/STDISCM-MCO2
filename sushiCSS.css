@@ -1,0 +1,115 @@
+body{
+    --color-primary: #cd8143;
+    --color-primary-dark: #9c4e18;
+    --color-secondary: #f7e3cb;
+    --color-error: #cc3333;
+    --color-success: #4bb544;
+    --border-radius: 4px;
+
+    margin: 0;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    background-color: var(--color-secondary);
+    background-size: cover; 
+    font-family: 'Proxima Nova'
+
+}
+
+.Containter{
+    width: 400px;
+    max-width: 400px;
+    margin: 1 rem; 
+    padding: 2rem;
+    border-radius: 15px;
+    background: var(--color-primary);
+    text-align: center;
+    margin-top: 5rem;
+}
+
+.containter,
+.form__input,
+.form__button{
+    font: 1rem 'Proxima Nova';
+}
+
+.form_title{
+    margin-bottom: 2rem;
+    align-content: center;
+    text-align: center;
+    color: white;
+}
+
+
+.form__input{
+    display: inline-block;
+    width: 75%;
+    padding: .50rem;
+    box-sizing: border-box;
+    border-radius: 15px;
+    border: 1px solid white;
+    outline: none;
+    background: white ;
+    text-align: center;
+    
+}
+
+.form__input-grpup{
+    margin-bottom: 1rem;
+}
+
+.enter_name_message{
+    text-align: center;
+    color: white;
+}
+
+.form__button{
+    width: 100px;
+    margin: 1rem;
+    color: white;
+    border-color: var(--color-primary-dark);
+    outline: none;
+    cursor: pointer;
+    background: var(--color-primary-dark);
+    border-radius: 15px;   
+    font-size: 1.1rem;
+    text-align: center;
+}
+
+.player_Container{
+    align-content: center;
+
+}
+.player{
+    margin-top: 2rem;
+    width: auto;
+    background: var(--color-secondary);
+}    
+
+
+.Player_Name{
+    width: 300px;
+    max-width: 300;
+    left: 75px;
+    top: 650px;
+    float: left;
+    background:white;
+    margin-right: 2rem;
+    border-radius: 15px;
+    padding: .50rem;
+}
+
+.is_Ready{
+    width: 100px;
+    max-width: 100px;
+    float: right;
+    background-color: #4bb544;
+    left: 100px;
+    top: 650px;
+    margin-left: 2rem;
+    border-radius: 15px;
+    text-align: center;
+    padding: .50rem;
+}
