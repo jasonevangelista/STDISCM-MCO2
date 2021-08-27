@@ -2,8 +2,9 @@ body{
     --color-primary: #cd8143;
     --color-primary-dark: #9c4e18;
     --color-secondary: #f7e3cb;
-    --color-error: #cc3333;
+    --color-error: #cc4a33;
     --color-success: #4bb544;
+    --color-noplayer: #cacaca;
     --border-radius: 4px;
 
     margin: 0;
@@ -14,7 +15,7 @@ body{
     font-size: 18px;
     background-color: var(--color-secondary);
     background-size: cover; 
-    font-family: 'Proxima Nova'
+    font-family: 'BabyDoll';
 
 }
 
@@ -32,7 +33,7 @@ body{
 .containter,
 .form__input,
 .form__button{
-    font: 1rem 'Proxima Nova';
+    font: 1rem 'BabyDoll';
 }
 
 .form_title{
@@ -76,6 +77,7 @@ body{
     border-radius: 15px;   
     font-size: 1.1rem;
     text-align: center;
+    padding: .30rem;
 }
 
 .player_Container{
@@ -105,7 +107,7 @@ body{
     width: 100px;
     max-width: 100px;
     float: right;
-    background-color: #4bb544;
+    background-color: #77b544;
     left: 100px;
     top: 650px;
     margin-left: 2rem;
