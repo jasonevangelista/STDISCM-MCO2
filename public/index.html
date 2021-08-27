@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Sushi Go Card Game</title>
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+
+<section id="player-list-section">
+    <h3>Player List</h3>
+    <p id="playerList"></p>
+    <button id="btn-ready">Ready</button>
+</section>
+
+<section>
+    <form id="lobbyForm">
+        <label for="username">Username: </label>
+        <input type="text" id="username" name="username">
+        <input type="submit" value="Enter Lobby">
+    </form>
+</section>
+
+    <!-- Socket.IO Javacript -->
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/js/app.js" charset="utf-8"></script>
+</body>
+</html>
