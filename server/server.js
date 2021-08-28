@@ -39,6 +39,9 @@ io.on('connection', (socket) => {
       io.emit('successfulJoin');
       io.emit('updatePlayerList', playerList);
     }
+    else{
+      io.emit('unsuccessfulJoin');
+    }
   });
 
   socket.on('toggleReady', () => {
