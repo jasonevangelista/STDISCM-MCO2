@@ -36,11 +36,11 @@ io.on('connection', (socket) => {
     if(checkUniqueUsername(playerList, userData.username)){
       // append user object to player list
       playerList.push(userData);
-      io.in(userData.userId).emit('successfulJoin');
+      io.to(userData.userId).emit('successfulJoin');
       io.emit('updatePlayerList', playerList);
     }
     else{
-      io.in(userData.userId).emit('unsuccessfulJoin');
+      io.to(userData.userId).emit('unsuccessfulJoin');
     }
   });
 
