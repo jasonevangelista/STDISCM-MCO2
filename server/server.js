@@ -32,9 +32,13 @@ io.on('connection', (socket) => {
   })
 
   socket.on('enterLobby', (userData) => {
-    // append user object to player list
-    playerList.push(userData);
-    io.emit('updatePlayerList', playerList);
+    //check if username is unique to other players
+    if(checkUniqueUsername(playerList, userData.username)){
+      // append user object to player list
+      playerList.push(userData);
+      io.emit('successfulJoin');
+      io.emit('updatePlayerList', playerList);
+    }
   });
 
   socket.on('toggleReady', () => {
@@ -51,7 +55,16 @@ io.on('connection', (socket) => {
 
 });
 
+function checkUniqueUsername(playerList, username){
+  // check if username is unique from other players
+  for(let i = 0; i < playerList.length; i++){
+    if (playerList[i].username == username){
+      return false;
+    }
+  }
 
+  return true
+}
 function checkStartGameStatus(playerList){
   var readyCount = 0;
   // check ready status of all players

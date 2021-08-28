@@ -7,10 +7,6 @@ const playerListSection = document.getElementById('player-list-section');
 // event listeners
 
 lobbyForm.addEventListener('submit', (values) => {
-  // hide entry form
-  lobbyForm.style.display = "none";
-  // show player list section
-  playerListSection.style.display = "block";
   // send new username to server
   values.preventDefault();
   console.log("username: ", values.target.elements.username.value);
@@ -26,6 +22,17 @@ readyBtn.addEventListener('click', () => {
 })
 
 // socket listeners
+socket.on('successfulJoin', () => {
+  // hide entry form
+  lobbyForm.style.display = "none";
+  // show player list section
+  playerListSection.style.display = "block";
+})
+
+socket.on('unsuccessfulJoin', () => {
+  //TODO: Show an error message stating username already exists
+  console.log("Username already exists");
+})
 
 socket.on('updatePlayerList', (playerList) => {
   // get updated player list from server
