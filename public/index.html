@@ -6,22 +6,9 @@
 </head>
 <body>
 
-<section id="player-list-section">
-    <h3>Player List</h3>
-    <p id="playerList"></p>
-    <button id="btn-ready">Ready</button>
-</section>
-
-<section>
-    <form id="lobbyForm">
-        <label for="username">Username: </label>
-        <input type="text" id="username" name="username">
-        <input type="submit" value="Enter Lobby">
-    </form>
-</section>
+    <iframe id="main-content" src="/GameLobby1.html"></iframe>
 
     <!-- Socket.IO Javacript -->
-    <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.0/dist/js.cookie.min.js"></script>
     <script src="/socket.io/socket.io.js"></script>
     <script src="/js/app.js" charset="utf-8"></script>
 </body>

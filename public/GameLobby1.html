@@ -6,22 +6,23 @@
     <title> Sushi Go</title>
     <meta charset="utf-8">
     <link rel="stylesheet" href="css/sushiCSS.css">
-
+    
 </head>
 <body>
     <div class="Containter">
         <form class="form" id="Login">
-            <img src="../sushi_go_logo.png" style="width: 200px;">
+            <img src="img/sushi_go_logo.png" style="width: 200px;">
             <h2 class="form_title">Welcome to Sushi Go</h2>
             <div class="form__input-group">
                 <p class="enter_name_message">Enter player name:</p> 
-                <input type="text" class="form__input">
+                <input type="text" class="form__input" id="username">
             </div>
 
-            <button class="form__button" type="submit"> Confirm </button>
+            <button class="form__button" type="submit" id="confirm-button"> Confirm </button>
         </form>
     </div>
 
+    <script src="js/lobby1.js" defer></script>
 </body>
 
 </html>
