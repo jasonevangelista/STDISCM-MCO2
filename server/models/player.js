@@ -10,10 +10,15 @@ class Player {
    * id
    * 
    * @param {string} username The unique user name of the user
+   * @param {string} id A unique string identifier for the user
+   * @throws {InvalidPlayerError} When the username is empty, null, or undefined
    */
-  constructor(username){
-    this._sessionId = uuidv4();
-    this._userId = uuidv4();
+  constructor(username, id){
+    username = username != undefined ? String(username).trim(): "";
+    if(username == ""){
+      throw new InvalidPlayerError("Username is required.");
+    }
+    this._id = id;
     this._username = username;
     this._readyStatus = false;
   }
@@ -28,15 +33,8 @@ class Player {
   /**
    * @return {strings} A unique public identifier
    */
-  get userId(){
-    return this._userId;
-  }
-
-  /**
-   * @returns {string} a unique private identifier
-   */
-  get sessionId(){
-    return this._sessionId;
+  get id(){
+    return this._id;
   }
 
   /**
@@ -51,5 +49,13 @@ class Player {
   }
 }
 
+class InvalidPlayerError extends Error {
+  constructor(message){
+    super(message);
+    this.name = this.constructor.name;
+  }
+}
+
 module.exports.Player = Player;
+module.exports.InvalidPlayerError = InvalidPlayerError;
 
