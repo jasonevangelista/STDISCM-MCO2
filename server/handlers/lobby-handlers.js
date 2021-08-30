@@ -38,13 +38,17 @@ module.exports = (io, socket) => {
 
   /**
    * Event handler for socket disconnect. If the socket is part of a game lobby, remove player from lobby and 
-   * emit "updatePlayerList" to all sockets in the game room
+   * emit "updatePlayerList" to all sockets in the game room.
+   * Resets the ready status for all players when disconnect is from lobby.
    */
   const disconnect = () => {
     if(socket.player){
       console.log(`Player left: {username: "${socket.player.username}", id:"${socket.player.id}"}`);
       let game = Game.getInstance();
       game.removePlayer(socket.player);
+      for(let i = 0; i < game._players.length; i++){
+        game._players[i]._readyStatus = false;
+      }
       io.to(game.id).emit("updatePlayerList", game.getPlayerList());
     }
   }
