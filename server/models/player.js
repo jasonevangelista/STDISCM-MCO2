@@ -21,6 +21,22 @@ class Player {
     this._id = id;
     this._username = username;
     this._readyStatus = false;
+
+    // current list of cards to choose from
+    this._currentHand = [];
+
+    // list of cards picked for current round
+    this._roundPicks = [];
+
+    // individual scores for the per-round breakdown
+    this._roundScoreSashimi = 0;
+    this._roundScoreDumplings = 0;
+    this._roundScoreEel = 0;
+    this._roundScoreTofu = 0;
+
+    // total scores for current round and overall
+    this._currentRoundScore = 0;
+    this._totalScore = 0;
   }
 
   /**

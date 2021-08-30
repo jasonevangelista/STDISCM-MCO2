@@ -130,6 +130,94 @@ class Game{
     this._players = [];
     this._id = uuidv4();
   }
+
+  /**
+   * Computes the scores of all the players
+   */
+  computeAllPoints(){
+    for(let i = 0; i < this._players.length; i++){
+      currPlayer = this._players[i];
+      this.computeSushiPoints(currPlayer);
+    }
+  }
+
+  /**
+   * Computes the score of a single player
+   */
+  computeSushiPoints(player){
+    /*
+      Card ID representation:
+      1 - sashimi
+      2 - dumplings
+      3 - eel
+      4 - tofu
+    */
+    let countSashimi = 0;
+    let countDumplings = 0;
+    let countEel = 0;
+    let countTofu = 0;
+
+    // count occurences of different card types
+    for(let i = 0; i < player._roundPicks; i++){
+      if (player._roundPicks[i] == 1){
+        countSashimi++;
+      }
+      else if (player._roundPicks[i] == 2){
+        countDumplings++;
+      }
+      else if (player._roundPicks[i] == 3){
+        countEel++;
+      }
+      else{
+        countTofu++;
+      }
+    }
+
+    // Sashimi computation
+    player._roundScoreSashimi = Math.floor(countSashimi / 3)
+
+    // Dumplings computation
+    if (countDumplings == 1){
+      player._roundScoreDumplings = 1;
+    }
+    else if (countDumplings == 2){
+      player._roundScoreDumplings = 3;
+    }
+    else if (countDumplings == 3){
+      player._roundScoreDumplings = 6;
+    }
+    else if (countDumplings == 4){
+      player._roundScoreDumplings = 10;
+    }
+    else if (countDumplings == 5){
+      player._roundScoreDumplings = 15;
+    }
+
+    // Eel computation
+    if (countEel == 1){
+      player._roundScoreEel = -3;
+    }
+    else if (countEel >= 2){
+      player._roundScoreEel = 7;
+    }
+
+    // Tofu computation
+    if (countTofu == 1){
+      player._roundScoreTofu = 2;
+    }
+    else if (countTofu == 2){
+      player._roundScoreTofu = 6;
+    }
+    else if (countTofu >= 3){
+      player._roundScoreTofu = 0;
+    }
+
+    // compute total round score
+    player._currentRoundScore = player._roundScoreSashimi + player._roundScoreDumplings + player._roundScoreEel + player._roundScoreTofu;
+
+    // append current round score to total overall score
+    player._totalScore += player._currentRoundScore;
+  }
 }
 
 module.exports.Game = Game;
