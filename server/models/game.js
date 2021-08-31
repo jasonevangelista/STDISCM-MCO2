@@ -279,6 +279,19 @@ class Game{
   }
 
   /**
+  * Swaps the hands of all players in the current round
+  * @param {int []} round list of cards for each player in the round
+  */
+  swapHands(round){
+    let temp = round[0];
+    for(let i = 0; i < this._players.length; i++){
+      round[i] = round[i+1];
+    }
+    round[this._players.length - 1] = temp;
+    return round;
+  }
+
+  /**
    * Computes the scores of all the players
    */
   computeAllPoints(){
