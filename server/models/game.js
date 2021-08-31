@@ -125,6 +125,7 @@ class Game{
     this._cardDeck = this.generateCardDeck();
 
     // Divide cards into different hands for 3 rounds
+    this.generateHands(this._cardDeck, this._players.length);
 
     // Distribute hands for first round to players
 
