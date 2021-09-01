@@ -25,6 +25,8 @@ class Player {
     // current list of cards to choose from
     this._currentHand = [];
 
+    this._selectedCard = null; // The player's selected card for the current turn
+
     // list of cards picked for current round
     this._roundPicks = [];
 
@@ -60,10 +62,47 @@ class Player {
     return this._readyStatus;
   }
 
+  get hand(){
+    return this._currentHand.map((x) => x);
+  }
+
   toggleReady(){
     this._readyStatus = !this._readyStatus;
   }
+
+  /**
+   * Selects a card from the current hand of the player and places it into list of cards picked for the 
+   * current round. Performs no operation if the card does not exist in the current hand or if the player has 
+   * already picked a card in the current turn
+   * 
+   * @param {number} cardId The id of the card to play
+   * @return {boolean} Whether a card was sucessfully played.
+   */
+  selectCard(cardId){
+    if(!this._selectedCard){
+      let index = this._currentHand.indexOf(cardId);
+      if(index > -1){
+        this._currentHand.splice(index, 1);
+        this._selectedCard = cardId;
+        return true;
+      } 
+    }
+    return false;
+  }
+
+  /**
+   * Places the selected card of the player for the current turn into the list of the player's picked cards for 
+   * the round, which will be visiable to other players
+   */
+  revealCard(){
+    if(this._selectedCard){
+      this._roundPicks.push(this._selectedCard);
+      this._selectedCard = null;
+    }
+  }
 }
+
+
 
 class InvalidPlayerError extends Error {
   constructor(message){
