@@ -20,6 +20,9 @@ class Game{
     this._handsRound1 = [];
     this._handsRound2 = [];
     this._handsRound3 = [];
+
+    // current game round tracker
+    this._currentRound = 1;
   }
 
   /**
@@ -127,7 +130,12 @@ class Game{
     // Divide cards into different hands for 3 rounds
     this.generateHands(this._cardDeck, this._players.length);
 
-    // Distribute hands for first round to players
+    // Distribute hands for first turn of first round to players
+    for(let i = 0; i < this._players.length; i++){
+      this._players[i]._currentHand = this._handsRound1[i];
+    }
+
+    // emit to player sockets that game is ready for playing
 
     setTimeout(() => {
       this.end(io);
