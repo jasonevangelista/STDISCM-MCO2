@@ -124,8 +124,6 @@ class Game{
   start(io){
     this._state = Game.ONGOING_STATE;
     console.log("Game starting");
-    io.to(this.id).emit('startGame');
-    //TODO: replace with game logic
 
     // Generate card deck
     this._cardDeck = this.generateCardDeck();
@@ -140,10 +138,49 @@ class Game{
     }
 
     // emit to player sockets that game is ready for playing
+    io.to(this.id).emit('startGame');
+  }
 
-    setTimeout(() => {
-      this.end(io);
-    }, 3000);
+  /**
+   * Proceeds the game to the next round if applicable
+   * 
+   * @return {Object} The score of each player if the current round has ended; otherwise, returns null
+   */
+  nextRound(){
+    // If all players have no cards or one card left in their hand, move to next round
+    if(this._players.every((player) => player._currentHand.length == 0 || player._currentHand.length == 1)){
+      // Automatically play the last card
+      this._players.forEach((player) => {
+        if(player._currentHand.length == 1){
+          player._roundPicks.push(player._currentHand[0]);
+          player._currentHand = [];
+        }
+      });
+
+      this.computeAllPoints();
+
+      let scores = this._players.map((player) => {
+        return {
+          id: player.id,
+          roundScore: player._currentRoundScore,
+          totalScore: player._totalScore
+        };
+      });;
+
+      this._currentRound += 1;
+
+      // Update current hands for the next round
+      this._handsCurrentRound = this._currentRound == 2 ? this._handsRound2 : this._handsRound3;
+
+      // Reset player picks and current hand
+      this._players.forEach((player, i) => {
+        player._roundPicks = [];
+        player._currentHand = this._handsCurrentRound[i];
+        player._currentRoundScore = 0;
+      });
+      return scores;
+    }
+    return null;
   }
 
   /**
@@ -155,7 +192,25 @@ class Game{
     io.to(this.id).disconnectSockets();
     this._state = Game.WAITING_STATE;
     this._players = [];
+    this._currentRound = 1;
     this._id = uuidv4();
+  }
+
+  /**
+   * @returns {Object} Information about current round of the game and the status of each player
+   */
+   getGameStatus(){
+    return {
+      round: this._currentRound,
+      players: this._players.map((player) => {
+        return {
+          id: player.id,
+          username: player.username,
+          roundPicks: player._roundPicks,
+          hasSelected: player._selectedCard != null
+        }
+      }),
+    };
   }
 
   /**
@@ -308,7 +363,7 @@ class Game{
    */
   computeAllPoints(){
     for(let i = 0; i < this._players.length; i++){
-      currPlayer = this._players[i];
+      let currPlayer = this._players[i];
       this.computeSushiPoints(currPlayer);
     }
   }
@@ -323,7 +378,7 @@ class Game{
     let countTofu = 0;
 
     // count occurences of different card types
-    for(let i = 0; i < player._roundPicks; i++){
+    for(let i = 0; i < player._roundPicks.length; i++){
       if (player._roundPicks[i] == 1){
         countSashimi++;
       }
