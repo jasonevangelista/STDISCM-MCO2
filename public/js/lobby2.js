@@ -44,7 +44,8 @@ socket.on("updatePlayerList", (playerList) => {
 
 socket.on("startGame", () => {
   // TODO: Load game page into iframe
-  document.body.innerHTML = "<p>Game not implemented, ending in 3 seconds</p>";
+  // document.body.innerHTML = "<p>Game not implemented, ending in 3 seconds</p>";
+  mainContentFrame.setAttribute("src", "/test.html");
 });
 
 readyBtn.addEventListener("click", (event) => {
