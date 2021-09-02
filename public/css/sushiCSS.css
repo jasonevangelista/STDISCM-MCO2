@@ -5,6 +5,9 @@ body{
     --color-error: #cc4a33;
     --color-success: #4bb544;
     --color-noplayer: #cacaca;
+    --color-leader: #DAA520;
+    --color-roundleader: #DAA520;
+    --color-nonleader: white;
     --border-radius: 4px;
 
     margin: 0;
@@ -82,14 +85,13 @@ body{
 
 .player_Container{
     align-content: center;
-
 }
+
 .player{
     margin-top: 2rem;
     width: auto;
     background: var(--color-secondary);
 }    
-
 
 .Player_Name{
     width: 300px;
@@ -115,3 +117,26 @@ body{
     text-align: center;
     padding: .50rem;
 }
+
+.standings_Container{
+    margin-top: 100px;
+    align-content: center;
+}
+
+table, th, td{
+    border: 2px solid black;
+    border-collapse: collapse;
+    background-color: white;
+    text-align: center;
+    font-family: 'BabyDoll';
+    border-radius: 10px;
+}
+
+th, td{
+    padding: 5px;
+}
+
+#continue_button{
+    width: 300px;
+}
+
