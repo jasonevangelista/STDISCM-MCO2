@@ -62,8 +62,18 @@ class Player {
     return this._readyStatus;
   }
 
+  /**
+   * @returns {int[]} The current hand of the user
+   */
   get hand(){
     return this._currentHand.map((x) => x);
+  }
+
+  /**
+   * @returns {int} The total score of the user
+   */
+  get totalScore(){
+    return this._totalScore;
   }
 
   toggleReady(){
