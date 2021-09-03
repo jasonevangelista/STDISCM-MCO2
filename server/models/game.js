@@ -438,6 +438,32 @@ class Game{
     // append current round score to total overall score
     player._totalScore += player._currentRoundScore;
   }
+
+  /**
+   * Determine winner of the game
+   * @returns {string} winner of the game 
+   */
+  determineWinner(){
+    let winner = null;
+    // set initial value as min int value
+    let winnerScore = Number.MIN_SAFE_INTEGER; 
+
+    for(let i = 0; i < this._players.length; i++){
+      currPlayer = this._players[i];
+      if(currPlayer.totalScore > winnerScore){
+        winner = currPlayer.username;
+        winnerScore = currPlayer.totalScore;
+      }
+    }
+  
+    if(winner){
+      return winner;
+    }
+    else{
+      return "No winner found";
+    }
+
+  }
 }
 
 module.exports.Game = Game;
