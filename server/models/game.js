@@ -60,6 +60,14 @@ class Game{
    */
   addPlayer(player){
     if(this._state == Game.ONGOING_STATE){
+      if(this._players.length == 0){
+        this._state = Game.WAITING_STATE
+      }
+      else{
+        throw new InvalidPlayerError("A game is ongoing")
+      }
+    }
+    if(this._state == Game.ONGOING_STATE){
       throw new InvalidPlayerError("A game is ongoing")
     }
     for(let i=0; i<this._players.length; ++i){
