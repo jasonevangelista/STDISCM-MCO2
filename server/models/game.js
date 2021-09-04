@@ -26,6 +26,9 @@ class Game{
     this._handsCurrentRound = [];
 
     this._winner = null;
+
+    // list of players that disconnected during match
+    this._playersToRemove = [];
   }
 
   /**
@@ -87,6 +90,14 @@ class Game{
     if(index > -1){
       this._players.splice(index, 1);
     }
+    return index;
+  }
+
+  removeHand(index){
+    this._handsCurrentRound.splice(index, 1);
+    this._handsRound1.splice(index, 1);
+    this._handsRound2.splice(index, 1);
+    this._handsRound3.splice(index, 1);
   }
 
   /**
