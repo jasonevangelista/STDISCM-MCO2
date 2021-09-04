@@ -21,11 +21,11 @@ class Game{
     this._handsRound2 = [];
     this._handsRound3 = [];
 
-    
-
     // current game round tracker
     this._currentRound = 1;
     this._handsCurrentRound = [];
+
+    this._winner = null;
   }
 
   /**
@@ -197,6 +197,9 @@ class Game{
    */
   end(io){
     console.log("Game ending");
+    if(this._winner){
+      console.log("Winner of game: " + this._winner);
+    }
     io.to(this.id).disconnectSockets();
     this._state = Game.WAITING_STATE;
     this._players = [];
@@ -453,6 +456,7 @@ class Game{
    */
   determineWinner(){
     let winner = null;
+    let currPlayer = null;
     // set initial value as min int value
     let winnerScore = Number.MIN_SAFE_INTEGER; 
 

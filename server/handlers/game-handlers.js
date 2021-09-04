@@ -43,6 +43,7 @@ module.exports = (io, socket) => {
           // If round ends, update clients withs cores
           io.to(game.id).emit("updateScore", {round: game._currentRound - 1, score: scores});
           if(game._currentRound == 4){
+            game._winner = game.determineWinner();
             game.end(io);
             return;
           }
