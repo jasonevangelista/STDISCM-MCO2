@@ -8,6 +8,7 @@ body{
     --color-leader: #DAA520;
     --color-roundleader: #DAA520;
     --color-nonleader: white;
+    --color-ccBack: #b7dbe7;
     --border-radius: 4px;
 
     margin: 0;
@@ -140,3 +141,31 @@ th, td{
     width: 300px;
 }
 
+.card_container{
+
+    width: 370px;
+    height: auto;
+    background-color: var(--color-ccBack);
+}
+
+.indiv_container > div {
+    background-color: rgba(255, 255, 255, 0.8);
+    text-align: center;
+    
+    font-size: 1rem;
+    margin: 0%;
+    width: auto;
+  }
+
+.indiv_container{
+    margin: 1rem;
+    Display: grid;
+    grid-template-columns: 150px 150px;
+    background-color: white;
+    height: auto;
+    padding: .5rem;
+    grid-gap: .25rem;
+    
+;
+    
+}
