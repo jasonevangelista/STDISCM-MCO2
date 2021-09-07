@@ -29,6 +29,11 @@ class Game{
 
     // list of players that disconnected during match
     this._playersToRemove = [];
+
+    // game countdown
+    this._countdownTime = 10;
+    this._intervalId = null;
+    this._ongoingCountdown = false;
   }
 
   /**

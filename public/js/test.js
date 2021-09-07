@@ -14,6 +14,7 @@ var mainContentFrame = parent.getMainContentFrame();
 var playerRows = document.getElementsByClassName("player-row");
 var roundSpan = document.getElementById("round-number");
 var handElem = document.getElementById("hand");
+var countdown = document.getElementById("countdown");
 
 
 // Populates a row from the player table with the player's round picks, username, and whether or not they have played a card in the current turn
@@ -27,6 +28,11 @@ function populateRow(playerRow, player){
   roundPicksTd.innerHTML = player.roundPicks
   selectedCardTd.innerHTML = player.hasSelected;
 }
+
+socket.on("updateCountdown", (time) => {
+  console.log("countdown updating!")
+  countdown.innerText = time;
+})
 
 
 socket.on("updateHand", (hand) => {
@@ -81,3 +87,4 @@ socket.on("updateGameStatus", (gameStatus) => {
 // Get latest game status and hand once js and html has been loaded into the page
 socket.emit("getGameStatus");
 socket.emit("getHand");
+socket.emit("startCountdown");
