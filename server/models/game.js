@@ -216,8 +216,9 @@ class Game{
     if(this._winner){
       console.log("Winner of game: " + this._winner.username);
     }
-    io.to(this.id).disconnectSockets();
+    
     this._state = Game.WAITING_STATE;
+    io.to(this.id).disconnectSockets();
     this._players = [];
     // this._currentRound = 1;
     this._id = uuidv4();
