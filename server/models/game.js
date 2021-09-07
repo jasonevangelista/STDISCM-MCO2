@@ -214,13 +214,36 @@ class Game{
   end(io){
     console.log("Game ending");
     if(this._winner){
-      console.log("Winner of game: " + this._winner);
+      console.log("Winner of game: " + this._winner.username);
     }
     io.to(this.id).disconnectSockets();
     this._state = Game.WAITING_STATE;
     this._players = [];
-    this._currentRound = 1;
+    // this._currentRound = 1;
     this._id = uuidv4();
+
+    clearInterval(this._intervalId);
+
+    this._cardDeck = [];
+
+    this._handsRound1 = [];
+    this._handsRound2 = [];
+    this._handsRound3 = [];
+
+    // current game round tracker
+    this._currentRound = 1;
+    this._handsCurrentRound = [];
+
+    this._winner = null;
+
+    // list of players that disconnected during match
+    this._playersToRemove = [];
+
+    // game countdown
+    this._countdownTime = 10;
+    this._intervalId = null;
+    this._ongoingCountdown = false;
+
   }
 
   /**
@@ -479,7 +502,7 @@ class Game{
     for(let i = 0; i < this._players.length; i++){
       currPlayer = this._players[i];
       if(currPlayer.totalScore > winnerScore){
-        winner = currPlayer.username;
+        winner = currPlayer;
         winnerScore = currPlayer.totalScore;
       }
     }

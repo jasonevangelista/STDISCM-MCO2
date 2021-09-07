@@ -23,7 +23,6 @@ module.exports = (io, socket) => {
         // reset countdown timer when all players have finished turn
         clearInterval(game._intervalId);
         game._ongoingCountdown = false;
-        console.log("countdown time: ", game._countdownTime);
 
 
         finishAllPlayersTurns();
