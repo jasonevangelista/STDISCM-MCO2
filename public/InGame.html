@@ -9,63 +9,162 @@
 </head>
 
 <body>
+    
+    <div class="play-area">
+        <div class=" button-area">
+            <div class="button-area-text" id="action-text">You must play a Card</div>
+            <div class="button-area-text faded" id="play-card-button">Play a card</div>
+            <div class="button-area-text" id="round-counter">Round 1</div>
 
-
-
-<!-- card list -->
-    <div class = "card_container">
-        <div class = "indiv_container">
-            <div>
-                <img src= "img/SASHIMI.png" style="height: 200px;">
+        </div>
+        <!--Cards in play-->
+        <div class=" card-area">
+            <div class="player-area">
+                <div class="player-cards" id="player">
+                    <div class="table-player-name player-name-personal">
+                        Your Hand
+                        </div>
+                    <div class="deck deck-personal">
+                        <div class="card">
+                            <div class="face sashimi"></div>
+                        </div>
+                        <div class="card">
+                            <div class="face dumpling"></div>
+                        </div>
+                        <div class="card">
+                            <div class="face tofu"></div>
+                        </div>
+                        <div class="card">
+                            <div class="face eel"></div>
+                        </div>
+                    </div>
+                </div>
+                <!--Multiple player tables-->
+                <div class="player-table">
+                    <div class="table-player-name">
+                    Joshua's Played Cards
+                    </div>
+                    <div class="deck">
+                        <div class="card">
+                            <div class="face sashimi"></div>
+                        </div>
+                        <div class="card">
+                            <div class="face dumpling"></div>
+                        </div>
+                        <div class="card">
+                            <div class="face tofu"></div>
+                        </div>
+                        <div class="card">
+                            <div class="face eel"></div>
+                        </div>       
+                        <div class="card">
+                            <div class="face sashimi"></div>
+                        </div>
+                        <div class="card">
+                            <div class="face dumpling"></div>
+                        </div>
+                        <div class="card">
+                            <div class="face tofu"></div>
+                        </div>
+                        <div class="card">
+                            <div class="face eel"></div>
+                        </div>        
+                        <div class="card">
+                            <div class="face sashimi"></div>
+                        </div>
+                        <div class="card">
+                            <div class="face dumpling"></div>
+                        </div>
+                        <div class="card">
+                            <div class="face tofu"></div>
+                        </div>
+                        <div class="card">
+                            <div class="face eel"></div>
+                        </div>        
+                        <div class="card">
+                            <div class="face sashimi"></div>
+                        </div>
+                        <div class="card">
+                            <div class="face dumpling"></div>
+                        </div>
+                        <div class="card">
+                            <div class="face tofu"></div>
+                        </div>
+                        <div class="card">
+                            <div class="face eel"></div>
+                        </div>        
+                        <div class="card">
+                            <div class="face sashimi"></div>
+                        </div>
+                        <div class="card">
+                            <div class="face dumpling"></div>
+                        </div>
+                        <div class="card">
+                            <div class="face tofu"></div>
+                        </div>
+                        <div class="card">
+                            <div class="face eel"></div>
+                        </div>          
+                    </div>
+                </div>
             </div>
-            <div style ="text-align: left; ">
-                <h2> Sashimi</h2>
-                <p>Play 3 to score 10 points</p>
+            
+
+    <!-- card list -->
+            <div class = "card_container">
+                <div class = "indiv_container">
+                    <div>
+                        <img src= "img/SASHIMI.png" style="height: 200px;">
+                    </div>
+                    <div style ="text-align: left; ">
+                        <h2> Sashimi</h2>
+                        <p>Play 3 to score 10 points</p>
+                    </div>
+                </div>
+
+                <div class = "indiv_container">
+                    <div>
+                        <img src= "img/DUMPLING.png" style="height: 200px;">
+                    </div>
+                    <div style ="text-align: left; ">
+                        <h2> Dumplings</h2>
+                        <p> 1 Dumpling = 1pt. <br>
+                            2 Dumplings = 3pts. <br>
+                            3 Dumplings = 6pts. <br>
+                            4 Dumplings = 10pts. <br>
+                            5+ Dumplings = 15pts.
+                        </p>
+                    </div>
+                </div>
+
+                <div class = "indiv_container">
+                    <div>
+                        <img src= "img/TOFU.png" style="height: 200px;">
+                    </div>
+                    <div style ="text-align: left; ">
+                        <h2> Tofu </h2>
+                        <p> 1 Tofu = 2 pts. <br>
+                            2 Tofu = 6 pts. <br>
+                            3+ Tofu = 0 pts. <br>
+
+                        </p>
+                    </div>
+                </div>
+
+                <div class = "indiv_container">
+                    <div>
+                        <img src= "img/EEL.png" style="height: 200px;">
+                    </div>
+                    <div style ="text-align: left; ">
+                        <h2> Eel </h2>
+                        <p> 1 eel = -3pts. <br>
+                            2+ eel = 7pts. 
+
+                        </p>
+                    </div>
+                </div>
             </div>
         </div>
-
-        <div class = "indiv_container">
-            <div>
-                <img src= "img/DUMPLING.png" style="height: 200px;">
-            </div>
-            <div style ="text-align: left; ">
-                <h2> Dumplings</h2>
-                <p> 1 Dumpling = 1pt. <br>
-                    2 Dumplings = 3pts. <br>
-                    3 Dumplings = 6pts. <br>
-                    4 Dumplings = 10pts. <br>
-                    5+ Dumplings = 15pts.
-                </p>
-            </div>
-        </div>
-
-        <div class = "indiv_container">
-            <div>
-                <img src= "img/TOFU.png" style="height: 200px;">
-            </div>
-            <div style ="text-align: left; ">
-                <h2> Tofu </h2>
-                <p> 1 Tofu = 2 pts. <br>
-                    2 Tofu = 6 pts. <br>
-                    3+ Tofu = 0 pts. <br>
-
-                </p>
-            </div>
-        </div>
-
-        <div class = "indiv_container">
-            <div>
-                <img src= "img/EEL.png" style="height: 200px;">
-            </div>
-            <div style ="text-align: left; ">
-                <h2> Eel </h2>
-                <p> 1 eel = -3pts. <br>
-                    2+ eel = 7pts. 
-
-                </p>
-            </div>
-        </div>
-
     </div>
 
 
