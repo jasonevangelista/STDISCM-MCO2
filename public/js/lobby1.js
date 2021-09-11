@@ -4,7 +4,7 @@ if(!parent.getSocket){
 
 var socket = parent.getSocket();
 
-var mainContentFrame = parent.getMainContentFrame();
+var mainContentFrame = parent.document.getElementById(window.name);
 
 var joinForm = document.getElementById("Login");
 var confirmBtn = document.getElementById("confirm-button");

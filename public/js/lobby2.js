@@ -3,7 +3,7 @@ if(!parent.getSocket){
 }
 
 var socket = parent.getSocket();
-var mainContentFrame = parent.getMainContentFrame();
+var mainContentFrame = parent.document.getElementById(window.name);
 
 var playerElems = document.getElementsByClassName("player");
 var readyBtn = document.getElementById("ready_button");
