@@ -67,6 +67,7 @@ function updateStandings(players){
 
 socket.on("updateScore", updateStandings);
 
+
 socket.on("disconnect", function(){
     continueButton.style.display = "inline";
 });
@@ -74,3 +75,4 @@ socket.on("disconnect", function(){
 continueButton.addEventListener("click", function(){
     window.top.location.reload();
 });
+socket.emit("getScore");

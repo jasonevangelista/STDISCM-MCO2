@@ -77,7 +77,8 @@ module.exports = (io, socket) => {
    * Emits an "updateGameStatus" event to the requesting socket with information about the game status
    */
   const getGameStatus = () => {
-    if(socket.player){
+    let game = Game.getInstance();
+    if(socket.player && game.state == Game.ONGOING_STATE){
       let game = Game.getInstance();
       socket.emit("updateGameStatus", game.getGameStatus());
     }
@@ -91,6 +92,17 @@ module.exports = (io, socket) => {
       socket.emit("updateHand", socket.player.hand);
     }
   }
+
+  /**
+   * Emits an "updateScore" event to the requesting socket with the current score of the game
+   */
+  const getScore = () => {
+    let game = Game.getInstance();
+    if(socket.player && game.state == Game.ONGOING_STATE){
+      socket.emit("updateScore", game.getCurrentScores());
+    }
+  }
+
   /**
    * Emits the current value for the countdown timer to the player
    */
@@ -98,7 +110,7 @@ module.exports = (io, socket) => {
     let game = Game.getInstance();
 
     let countdown = game._countdownTime;
-    if(!game._ongoingCountdown){
+    if(!game._ongoingCountdown && game.state == Game.ONGOING_STATE){
       game._ongoingCountdown = true;
       console.log("countdown starting...");
       game._intervalId = setInterval(function () {
@@ -141,4 +153,5 @@ module.exports = (io, socket) => {
   socket.on("getGameStatus", getGameStatus);
   socket.on("getHand", getHand);
   socket.on("startCountdown", startCountdown);
+  socket.on("getScore", getScore);
 }
