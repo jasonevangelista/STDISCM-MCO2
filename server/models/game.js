@@ -464,7 +464,7 @@ class Game{
     }
 
     // Sashimi computation
-    player._roundScoreSashimi = Math.floor(countSashimi / 3)
+    player._roundScoreSashimi = Math.floor(countSashimi / 3) * 10;
 
     // Dumplings computation
     if (countDumplings == 1){
