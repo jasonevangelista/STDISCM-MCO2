@@ -26,7 +26,7 @@ body{
 .Containter{
     width: 400px;
     max-width: 400px;
-    margin: 1 rem; 
+    margin: 1rem; 
     padding: 2rem;
     border-radius: 15px;
     background: var(--color-primary);
@@ -120,7 +120,6 @@ body{
 }
 
 .standings_Container{
-    margin-top: 100px;
     align-content: center;
 }
 
@@ -135,6 +134,22 @@ table, th, td{
 
 th, td{
     padding: 5px;
+}
+
+.standings-player{
+    border-radius: 0px;
+}
+
+.standings-player--leader{
+    background-color: var(--color-leader);
+}
+
+.standings-player--non-leader{
+    background-color: var(--color-nonleader);
+}
+
+.standings-player--no-player{
+    background-color: var(--color-noplayer);
 }
 
 #continue_button{
@@ -180,6 +195,8 @@ th, td{
     margin-bottom: 20px;
 }
 
+
+
 .button-area-text{
     background-color: var(--color-ccBack);
     color:#1B4F60;
@@ -196,6 +213,28 @@ th, td{
 .faded{
     opacity: 0.5 ;
     cursor:default;
+}
+
+button.button-area-text{
+    background-color: var(--color-primary);
+    margin-left: 20px;
+    cursor: pointer;
+    font-family: inherit;
+    border: none;
+    color: white;
+}
+
+button.button-area-text:hover {
+    filter: brightness(0.95);
+}
+
+button.button-area-text:active {
+    filter: brightness(0.70);
+}
+
+button.button-area-text:disabled{
+    cursor:default !important;
+    opacity: 0.5;
 }
 
 #round-counter{
@@ -255,7 +294,7 @@ box-shadow: 0px 5px 10px grey;
 .card {
 position: relative;
 display: inline-block;
-margin-right: 5px;
+margin-right: 10px;
 transition: transform .2s;
 }
 
@@ -267,6 +306,12 @@ height: 105px;
 border-radius:10px;
 box-shadow: 4px 4px 10px grey;
 
+}
+
+.face.selected {
+    transform:scale(1.1);
+    border: 2px solid var(--color-primary-dark);
+    box-shadow: 4px 4px 10px var(--color-primary-dark);
 }
 
 /*Makes background images to their corresponding cards */
@@ -290,4 +335,56 @@ background-size: 84px 115px;
     background:url('../img/EEL.png');
     background-position: -5px -7px;
 background-size: 90px 119px;
+}
+
+.face-down{
+    background: var(--color-primary-dark);
+}
+
+/* Modal styles */
+.modal{
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    overflow: auto;
+}
+
+.modal__exit{
+    font-size: 2rem;
+    float: right;
+}
+
+.modal__exit:hover{
+    cursor: pointer;
+    color: var(--color-primary);
+}
+
+.modal-container{
+    border: 1px solid var(--color-secondary);
+    width: 70%;
+    height: 60%;
+    
+    border-radius: 15px;
+    padding: 30px;
+    background-color: var(--color-secondary);
+    position: relative;
+    box-shadow: 0 3px 6px rgba(0,0,0,.15);
+}
+
+.modal-iframe {
+    width: 100%;
+    height: 90%;
+    border: none;
+}
+
+.modal-container--scroll{
+    overflow-y: auto;
+    border-radius: 8px;
 }

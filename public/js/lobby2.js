@@ -38,21 +38,25 @@ function updatePlayerList(playerList){
   }
 }
 
-socket.on("updatePlayerList", (playerList) => {
+socket.on("updatePlayerList", function(playerList){
   updatePlayerList(playerList);
 });
 
-socket.on("startGame", () => {
-  // TODO: Load game page into iframe
-  // document.body.innerHTML = "<p>Game not implemented, ending in 3 seconds</p>";
-  mainContentFrame.setAttribute("src", "/test.html");
+socket.on("startGame", function(){
+  socket.off("updatePlayerList");
+  socket.off("disconnect");
+  mainContentFrame.setAttribute("src", "/InGame.html");
 });
 
-readyBtn.addEventListener("click", (event) => {
+socket.on("disconnect", () => {
+  window.top.location.reload();
+});
+
+readyBtn.addEventListener("click", function(event){
   socket.emit("toggleReady");
 });
 
-leaveBtn.addEventListener("click", (event) => {
+leaveBtn.addEventListener("click", function(event){
   socket.disconnect();
 })
 

@@ -6,8 +6,7 @@ const { v4: uuidv4 } = require('uuid');
 class Player {
 
   /**
-   * Creates a player object with the given username. Randomly assigns a private session id and a public user 
-   * id
+   * Creates a player object with the given username and id
    * 
    * @param {string} username The unique user name of the user
    * @param {string} id A unique string identifier for the user
@@ -36,8 +35,8 @@ class Player {
     this._roundScoreEel = 0;
     this._roundScoreTofu = 0;
 
-    // total scores for current round and overall
-    this._currentRoundScore = 0;
+    // total scores for all rounds and overall
+    this._roundScores = [];
     this._totalScore = 0;
   }
 

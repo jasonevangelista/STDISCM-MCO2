@@ -10,7 +10,3 @@ function getMainContentFrame(){
   return mainConentFrame;
 }
 
-socket.on("disconnect", () => {
-  location.reload();
-});
-

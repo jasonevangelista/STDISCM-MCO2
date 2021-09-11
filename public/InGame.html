@@ -3,109 +3,54 @@
 <html>
 
 <head>
-    <title> </title>
+    <title>Game</title>
     <meta charset="utf-8">
     <link rel="stylesheet" href="css/sushiCSS.css">
+    <link href="https://fonts.cdnfonts.com/css/babydoll" rel="stylesheet">
 </head>
 
 <body>
     
     <div class="play-area">
         <div class=" button-area">
-            <div class="button-area-text" id="action-text">You must play a Card</div>
-            <div class="button-area-text faded" id="play-card-button">Play a card</div>
+            <div class="button-area-text" id="action-text"><span id="timer"></span></div>
+            <button class="button-area-text" id="play-card-button" disabled="true">Play card</button>
+            <button class="button-area-text" id="view-standings-button">View Standings</button>
+            
             <div class="button-area-text" id="round-counter">Round 1</div>
-
+            
         </div>
         <!--Cards in play-->
         <div class=" card-area">
             <div class="player-area">
+                <h2>Username: <span id="username"></span></h2>
                 <div class="player-cards" id="player">
                     <div class="table-player-name player-name-personal">
                         Your Hand
                         </div>
-                    <div class="deck deck-personal">
-                        <div class="card">
-                            <div class="face sashimi"></div>
-                        </div>
-                        <div class="card">
-                            <div class="face dumpling"></div>
-                        </div>
-                        <div class="card">
-                            <div class="face tofu"></div>
-                        </div>
-                        <div class="card">
-                            <div class="face eel"></div>
-                        </div>
-                    </div>
+                    <div class="deck deck-personal"></div>
                 </div>
                 <!--Multiple player tables-->
-                <div class="player-table">
-                    <div class="table-player-name">
-                    Joshua's Played Cards
-                    </div>
-                    <div class="deck">
-                        <div class="card">
-                            <div class="face sashimi"></div>
-                        </div>
-                        <div class="card">
-                            <div class="face dumpling"></div>
-                        </div>
-                        <div class="card">
-                            <div class="face tofu"></div>
-                        </div>
-                        <div class="card">
-                            <div class="face eel"></div>
-                        </div>       
-                        <div class="card">
-                            <div class="face sashimi"></div>
-                        </div>
-                        <div class="card">
-                            <div class="face dumpling"></div>
-                        </div>
-                        <div class="card">
-                            <div class="face tofu"></div>
-                        </div>
-                        <div class="card">
-                            <div class="face eel"></div>
-                        </div>        
-                        <div class="card">
-                            <div class="face sashimi"></div>
-                        </div>
-                        <div class="card">
-                            <div class="face dumpling"></div>
-                        </div>
-                        <div class="card">
-                            <div class="face tofu"></div>
-                        </div>
-                        <div class="card">
-                            <div class="face eel"></div>
-                        </div>        
-                        <div class="card">
-                            <div class="face sashimi"></div>
-                        </div>
-                        <div class="card">
-                            <div class="face dumpling"></div>
-                        </div>
-                        <div class="card">
-                            <div class="face tofu"></div>
-                        </div>
-                        <div class="card">
-                            <div class="face eel"></div>
-                        </div>        
-                        <div class="card">
-                            <div class="face sashimi"></div>
-                        </div>
-                        <div class="card">
-                            <div class="face dumpling"></div>
-                        </div>
-                        <div class="card">
-                            <div class="face tofu"></div>
-                        </div>
-                        <div class="card">
-                            <div class="face eel"></div>
-                        </div>          
-                    </div>
+                <div class="player-table" id="player-table-personal">
+                    <div class="table-player-name">Your Cards</div>
+                    <div class="deck"></div>
+                </div>
+                <h2>Opponents' Cards:</h2>
+                <div class="player-table player-table-opponent" style="display: none;">
+                    <div class="table-player-name"></div>
+                    <div class="deck"></div>
+                </div>
+                <div class="player-table player-table-opponent" style="display: none;">
+                    <div class="table-player-name"></div>
+                    <div class="deck"></div>
+                </div>
+                <div class="player-table player-table-opponent" style="display: none;">
+                    <div class="table-player-name"></div>
+                    <div class="deck"></div>
+                </div>
+                <div class="player-table player-table-opponent" style="display: none;">
+                    <div class="table-player-name"></div>
+                    <div class="deck"></div>
                 </div>
             </div>
             
@@ -166,8 +111,16 @@
             </div>
         </div>
     </div>
+    
+    <div class="modal" id="standings-modal">
+        <div class="modal-container">
+            <span class="modal__exit modal-closer" id="standings-modal-closer">&times;</span>
+            <iframe class="modal-iframe" src="/Standings.html"></iframe>
+        </div>
+        
+    </div>
 
-
+    <script src="js/ingame.js"></script>
 
 </body>
 

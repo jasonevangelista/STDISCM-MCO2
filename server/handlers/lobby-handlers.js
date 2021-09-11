@@ -53,13 +53,13 @@ module.exports = (io, socket) => {
       game.removeHand(index);
       io.to(game.id).emit("updatePlayerList", game.getPlayerList());
       if(game._state == "ONGOING"){
+        io.to(game.id).emit("updateScore", game.getCurrentScores());
         if(game._players.length == 1 && !game._winner){
           game._winner = game._players[0];
           game.end(io);
         }
         else{
-
-          io.to(game.id).emit("getGameStatus", game.getGameStatus());
+          io.to(game.id).emit("updateGameStatus", game.getGameStatus());
           let count = 0;
           for(let i = 0; i < game._players.length; i++){
             if (game._players[i]._selectedCard){

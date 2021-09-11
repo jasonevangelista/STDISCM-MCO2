@@ -9,7 +9,7 @@ var mainContentFrame = parent.getMainContentFrame();
 var joinForm = document.getElementById("Login");
 var confirmBtn = document.getElementById("confirm-button");
 
-joinForm.addEventListener("submit", (event) => {
+joinForm.addEventListener("submit", function(event){
   event.preventDefault();
   var username = event.target.elements.username.value;
   if(username){

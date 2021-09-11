@@ -11,6 +11,7 @@ module.exports = (io, socket) => {
     let game = Game.getInstance();
     let allPlayersFinished = true;
     if (socket.player && socket.player.selectCard(cardId)){
+      console.log(`Player {username: "${socket.player.username}", id:"${socket.player.id}"} played card ${cardId}`);
       io.to(game.id).emit("playCard", socket.player.id);
       // after selecting card, check if all other players have finished selecting
       for(let i = 0; i < game._players.length; i++){
@@ -52,7 +53,7 @@ module.exports = (io, socket) => {
 
     if(scores){
       // If round ends, update clients withs cores
-      io.to(game.id).emit("updateScore", {round: game._currentRound - 1, score: scores});
+      io.to(game.id).emit("updateScore", scores);
       if(game._currentRound == 4){
         game._winner = game.determineWinner();
         game.end(io);

@@ -31,7 +31,7 @@ class Game{
     this._playersToRemove = [];
 
     // game countdown
-    this._countdownTime = 10;
+    this._countdownTime = 60;
     this._intervalId = null;
     this._ongoingCountdown = false;
   }
@@ -186,10 +186,13 @@ class Game{
       let scores = this._players.map((player) => {
         return {
           id: player.id,
-          roundScore: player._currentRoundScore,
+          username: player.username,
+          roundScores: player._roundScores,
           totalScore: player._totalScore
         };
-      });;
+      });
+
+      scores.sort((player1, player2) => player2.totalScore - player1.totalScore);
 
       this._currentRound += 1;
 
@@ -200,7 +203,6 @@ class Game{
       this._players.forEach((player, i) => {
         player._roundPicks = [];
         player._currentHand = this._handsCurrentRound[i];
-        player._currentRoundScore = 0;
       });
       return scores;
     }
@@ -241,7 +243,7 @@ class Game{
     this._playersToRemove = [];
 
     // game countdown
-    this._countdownTime = 10;
+    this._countdownTime = 60;
     this._intervalId = null;
     this._ongoingCountdown = false;
 
@@ -262,6 +264,23 @@ class Game{
         }
       }),
     };
+  }
+
+  /**
+   * @return {Object} The current score for each round
+   */
+  getCurrentScores(){
+    let scores = this._players.map((player) => {
+      return {
+        id: player.id,
+        username: player.username,
+        roundScores: player._roundScores,
+        totalScore: player._totalScore
+      };
+    });
+
+    scores.sort((player1, player2) => player2.totalScore - player1.totalScore);
+    return scores;
   }
 
   /**
@@ -460,7 +479,7 @@ class Game{
     else if (countDumplings == 4){
       player._roundScoreDumplings = 10;
     }
-    else if (countDumplings == 5){
+    else if (countDumplings >= 5){
       player._roundScoreDumplings = 15;
     }
 
@@ -484,10 +503,10 @@ class Game{
     }
 
     // compute total round score
-    player._currentRoundScore = player._roundScoreSashimi + player._roundScoreDumplings + player._roundScoreEel + player._roundScoreTofu;
+    player._roundScores.push(player._roundScoreSashimi + player._roundScoreDumplings + player._roundScoreEel + player._roundScoreTofu);
 
     // append current round score to total overall score
-    player._totalScore += player._currentRoundScore;
+    player._totalScore += player._roundScores[player._roundScores.length - 1];
   }
 
   /**
