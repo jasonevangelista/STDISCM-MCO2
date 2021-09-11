@@ -4,7 +4,6 @@ if(!parent.getSocket){
 
 var socket = parent.getSocket();
 
-var mainContentFrame = parent.document.getElementById(window.name);
 
 var joinForm = document.getElementById("Login");
 var confirmBtn = document.getElementById("confirm-button");
@@ -19,6 +18,7 @@ joinForm.addEventListener("submit", function(event){
     confirmBtn.style["border-color"] = "var(--color-noplayer)";
     socket.emit("enterLobby", username, (res) => {
       if(res.success){
+        var mainContentFrame = parent.document.getElementById(window.name);
         mainContentFrame.setAttribute("src", "/GameLobby2.html");
       }else{
         alert(res.message);

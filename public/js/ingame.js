@@ -3,7 +3,6 @@ if(window.location === window.parent.location || !parent.getSocket){
 }
 
 var socket = parent.getSocket();
-var mainContentFrame = parent.document.getElementById(window.name);
 
 var handDiv = document.querySelector(".deck.deck-personal");
 var playerTableDivs = document.getElementsByClassName("player-table-opponent");

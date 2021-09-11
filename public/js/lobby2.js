@@ -3,7 +3,6 @@ if(!parent.getSocket){
 }
 
 var socket = parent.getSocket();
-var mainContentFrame = parent.document.getElementById(window.name);
 
 var playerElems = document.getElementsByClassName("player");
 var readyBtn = document.getElementById("ready_button");
@@ -45,6 +44,7 @@ socket.on("updatePlayerList", function(playerList){
 socket.on("startGame", function(){
   socket.off("updatePlayerList");
   socket.off("disconnect");
+  var mainContentFrame = parent.document.getElementById(window.name);
   mainContentFrame.setAttribute("src", "/InGame.html");
 });
 
