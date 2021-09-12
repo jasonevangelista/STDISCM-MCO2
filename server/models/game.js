@@ -215,9 +215,9 @@ class Game{
    */
   end(io){
     console.log("Game ending");
-    if(this._winner){
-      console.log("Winner of game: " + this._winner.username);
-    }
+    // if(this._winner){
+    //   console.log("Winner of game: " + this._winner.username);
+    // }
     
     this._state = Game.WAITING_STATE;
     io.to(this.id).disconnectSockets();
