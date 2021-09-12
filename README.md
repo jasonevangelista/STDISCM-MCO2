@@ -1,7 +1,7 @@
 # STDISCM-MCO2 Sushi Go
 
 ## Deployed Application
-ADD LINK HERE
+https://stdiscm-mco2-sushigo.herokuapp.com/
 
 ## Installing
 1. Download or create a clone of the repository
